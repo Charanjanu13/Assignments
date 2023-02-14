@@ -96,10 +96,12 @@ Departmentid int
 CREATE TRIGGER trg_DeleteEmployee
 AFTER DELETE ON tblEmployee
 FOR EACH ROW
+as
 BEGIN
   INSERT INTO tblEmployeeAudit (id, name, gender, salary, departmentid)
-  VALUES (OLD.id, OLD.name, OLD.gender, OLD.salary, OLD.departmentid);
-END;
+  VALUES (OLD.id, OLD.name, OLD.gender, OLD.salary, OLD.departmentid)
+END
+GO
 
 
 
